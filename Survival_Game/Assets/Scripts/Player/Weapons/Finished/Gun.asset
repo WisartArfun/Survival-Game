@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -16,5 +16,5 @@ MonoBehaviour:
   shot_speed: 700
   shot_range: 500
   shot_damage: 5
-  shot_cooldown: 1
-  shot_current_cooldown: -0.0021909475
+  shot_cooldown: 0.05
+  shot_current_cooldown: -0.00009756535

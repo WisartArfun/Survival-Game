@@ -26,7 +26,7 @@ public class PlayerInput : MonoBehaviour {
 	void Start () {
 		bo = gameObject.GetComponent<Ishift>();
 		shooting = GetComponent<Shooting>();
-		controler_keyboard = GetComponent<Controler_Keyboard>();
+		// controler_keyboard = GetComponent<Controler_Keyboard>();
 	}
 	
 	void Update () {
@@ -46,7 +46,7 @@ public class PlayerInput : MonoBehaviour {
 			shooting.weapon.shot_current_cooldown -= Time.deltaTime;
 		}
 
-		if (controler_keyboard.m_State == Controler_Keyboard.eInputState.Controler) {
+		if (controler_keyboard.m_State == Controler_Keyboard.eInputState.MouseKeyboard) {
 			float camDis = cam.transform.position.y - my.position.y;
 			Vector3 mouse = cam.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, camDis));
 		
@@ -55,10 +55,11 @@ public class PlayerInput : MonoBehaviour {
 		
 			body.rotation = angle - 90;
 		} else {
-			float x = Input.GetAxis("SomeHorizontal");
-			float y = Input.GetAxis("SomeVertical");
+			float x = Input.GetAxis("ShootX");
+			float y = Input.GetAxis("ShootY");
 			if (x != 0.0f || y != 0.0f) {
 				body.rotation = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
+			}
 		}
 	}
 }

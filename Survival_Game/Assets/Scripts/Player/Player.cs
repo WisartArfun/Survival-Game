@@ -56,7 +56,7 @@ public class Player : BaseObject, Ishift { //, Ihealth {
 		movementData.force.y = y * movementData.speed;
 		movementData.force.z = 0;
 		// movementData.rb.AddForce(movementData.force);
-		Vector2 new_pos = new Vector2(transform.position.x + movementData.force.x, transform.position.y + movementData.force.y);
+		// Vector2 new_pos = new Vector2(transform.position.x + movementData.force.x, transform.position.y + movementData.force.y);
 		// movementData.rb.MovePosition(new_pos);
 		transform.position += movementData.force;
 	}
