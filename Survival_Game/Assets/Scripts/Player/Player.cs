@@ -8,9 +8,9 @@ public class Player : BaseObject, Ishift { //, Ihealth {
 	// public HealthData   healthData;
 	public Health health;
 
-	Camera cam;
-	Transform my;
-	Rigidbody2D body;
+	// Camera cam;
+	// Transform my;
+	// Rigidbody2D body;
 
 	public override void Start () {
 		base.Start();
@@ -20,25 +20,25 @@ public class Player : BaseObject, Ishift { //, Ihealth {
 		movementData.rb = gameObject.GetComponent<Rigidbody2D> ();
 	}
 
-	void Awake() {
-		cam = Camera.main;
-		my = GetComponent <Transform> ();
-		body = GetComponent <Rigidbody2D> ();
-	}
+	// void Awake() {
+	// 	cam = Camera.main;
+	// 	my = GetComponent <Transform> ();
+	// 	body = GetComponent <Rigidbody2D> ();
+	// }
 
-	public override void Update() {
-		base.Update();
-		// Distance from camera to object.  We need this to get the proper calculation.
-		float camDis = cam.transform.position.y - my.position.y;
+	// public override void Update() {
+	// 	base.Update();
+	// 	// Distance from camera to object.  We need this to get the proper calculation.
+	// 	float camDis = cam.transform.position.y - my.position.y;
 	
-		// Get the mouse position in world space. Using camDis for the Z axis.
-		Vector3 mouse = cam.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, camDis));
+	// 	// Get the mouse position in world space. Using camDis for the Z axis.
+	// 	Vector3 mouse = cam.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, camDis));
 	
-		float AngleRad = Mathf.Atan2 (mouse.y - my.position.y, mouse.x - my.position.x);
-		float angle = (180 / Mathf.PI) * AngleRad;
+	// 	float AngleRad = Mathf.Atan2 (mouse.y - my.position.y, mouse.x - my.position.x);
+	// 	float angle = (180 / Mathf.PI) * AngleRad;
 	
-		body.rotation = angle - 90;
-	}
+	// 	body.rotation = angle - 90;
+	// }
 
 	void OnCollisionEnter2D (Collision2D col) {
 		health.change_health(2);
