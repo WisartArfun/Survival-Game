@@ -10,5 +10,7 @@ public class Weapon : ScriptableObject {
 	public float shot_speed;
 	public float shot_range;
 	public float shot_damage;
+	public float shot_cooldown;
+	public float shot_current_cooldown;
 
 }

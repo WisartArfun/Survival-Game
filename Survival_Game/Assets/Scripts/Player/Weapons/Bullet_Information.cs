@@ -45,9 +45,17 @@ public class Bullet_Information : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
-		var ho = col.gameObject.GetComponent<HitableObject>();
-		if (ho != null) {
-			Destroy(gameObject);
+		// var ho = col.gameObject.GetComponent<HitableObject>();
+		// if (ho != null) {
+		// 	Destroy(gameObject);
+		// }
+		if (col.gameObject.transform == owner) {
+			return;
+		}
+		
+		var shootable = col.gameObject.GetComponent<Shootable>();
+		if (shootable != null) {
+			shootable.hit(this);
 		}
 	}
 }

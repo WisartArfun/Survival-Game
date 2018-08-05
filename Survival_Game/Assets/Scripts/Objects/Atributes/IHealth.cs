@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Ihealth {
+public interface IHealth {
 
-	void changeHealth (float damage);
+	void change_health (float amount);
 	
 }

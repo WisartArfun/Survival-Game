@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour {
 
-	public Weapon weapon;
+	public Weapon weapon; 
 	
 	public void trigger() {
 		if (weapon != null) {

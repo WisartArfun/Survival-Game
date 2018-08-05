@@ -2,40 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : BaseObject, Ishift, Ihealth {
+public class Player : BaseObject, Ishift { //, Ihealth {
 
 	public MovementData movementData;
-	public HealthData   healthData;
+	// public HealthData   healthData;
+	public Health health;
 
 	Camera cam;
 	Transform my;
 	Rigidbody2D body;
 
-	void OnCollisionEnter2D (Collision2D col) {
-		changeHealth(2);
-	}
-
-	public void changeHealth (float damage) {
-		healthData.currentHealth -= damage;
-		if (healthData.currentHealth <= 0) {
-			Destroy(gameObject);
-		}
-	}
-
-	public void Translate (float x, float y) {
-		movementData.force.x = x * movementData.speed;
-		movementData.force.y = y * movementData.speed;
-		movementData.force.z = 0;
-		// movementData.rb.AddForce(movementData.force);
-		Vector2 new_pos = new Vector2(transform.position.x + movementData.force.x, transform.position.y + movementData.force.y);
-		// movementData.rb.MovePosition(new_pos);
-		transform.position += movementData.force;
-	}
-
 	public override void Start () {
 		base.Start();
 		movementData    = gameObject.GetComponent<MovementData>();
-		healthData		= gameObject.GetComponent<HealthData>  ();
+		// healthData		= gameObject.GetComponent<HealthData>  ();
+		health = GetComponent<Health>();
 		movementData.rb = gameObject.GetComponent<Rigidbody2D> ();
 	}
 
@@ -57,5 +38,26 @@ public class Player : BaseObject, Ishift, Ihealth {
 		float angle = (180 / Mathf.PI) * AngleRad;
 	
 		body.rotation = angle - 90;
+	}
+
+	void OnCollisionEnter2D (Collision2D col) {
+		health.change_health(2);
+	}
+
+	// public void changeHealth (float damage) {
+	// 	healthData.currentHealth -= damage;
+	// 	if (healthData.currentHealth <= 0) {
+	// 		Destroy(gameObject);
+	// 	}
+	// }
+
+	public void Translate (float x, float y) {
+		movementData.force.x = x * movementData.speed;
+		movementData.force.y = y * movementData.speed;
+		movementData.force.z = 0;
+		// movementData.rb.AddForce(movementData.force);
+		Vector2 new_pos = new Vector2(transform.position.x + movementData.force.x, transform.position.y + movementData.force.y);
+		// movementData.rb.MovePosition(new_pos);
+		transform.position += movementData.force;
 	}
 }
